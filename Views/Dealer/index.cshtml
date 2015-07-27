@@ -1,0 +1,190 @@
+﻿<header class="header">
+  <div class="container">
+    <div class="nav-bar">
+      <div class="inner-container">
+        <div class="logo-area">
+          <div class="logo inline"> <a href="index.html" target="blank"><img src="~/Images/logo.png" alt="PartProtection" /></a> </div>
+          <div class="sponsor inline"> <img src="~/Images/ford.png" alt="Ford" /> </div>
+        </div>
+        <div class="nav-area inline">
+          <div class="admin-bar"> <span>Welcome</span>,&nbsp;<a class="user" href="#">John Williams</a> | <a href="#">Logout</a> </div>
+          <div class="main-nav">
+            <ul>
+              <li class="current"><a href="dashboard">Dashboard</a></li>
+              <li><a href="learn_more">Learn More</a></li>
+              <li><a href="#">Sell A Plan</a></li>
+              <li><a href="order_details">Order Details</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">History</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cover">
+      <div class="search-area inline">
+        <h2>DMS SEARCH</h2>
+        <div class="wrapper"> <i class="icon"></i>
+          <input type="search" placeholder="ENTER RO #" />
+        </div>
+        <h2>RO NOT FOUND</h2>
+      </div>
+      <div class="offers-area inline">
+        <div class="features inline"> <a class="box" href="#"> <img src="~/Images/parts.png" alt="" /> </a>
+          <p>Parts only<br />
+            plan</p>
+        </div>
+        <div class="features inline"> <a class="box" href="#"> <img src="~/Images/service.png" alt="" /> </a>
+          <p>Service Parts<br />
+            & labor plan</p>
+        </div>
+        <div class="features inline"> <a class="box" href="#"> <img src="~/Images/wholesale.png" alt="" /> </a>
+          <p>Wholesale<br />
+            plan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="middle-area">
+  <div class="container">
+    <div class="coverage inline">
+      <div class="heading">
+        <h1 onclick="toggleSection('coverage_plan');" >Continue a saved coverage plan&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+      </div>
+        <form action="" id="coverage_plan">
+            <div class="input-group">
+                <label for="mail" class="inline">Email</label>
+                <input class="inline" id="mail" type="email" placeholder="jsmith@email.com" />
+                <span class="inline">Required</span>
+            </div>
+            <div class="input-group">
+                <label for="phone" class="inline">Phone</label>
+                <input class="inline" id="phone" type="text" placeholder="(888)" />
+                <input id="phone1" class="inline" type="text" placeholder="123" />
+                <input id="phone2" class="inline" type="text" placeholder="4567" />
+                <span class="inline">Required</span>
+            </div>
+            <div class="input-group">
+                <label for="vin" class="inline">VIN</label>
+                <input class="inline" id="vin" type="text" placeholder="ENTER VIN #" />
+                <span class="inline">Required</span>
+            </div>
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    <div class="eligibility inline">
+      <div class="heading">
+          <h1 onclick="toggleSection('eligibility');">Part Protection Eligibility&nbsp;&nbsp;&nbsp;<img style ="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+      </div>
+      <form action="" id="eligibility">
+        <div class="input-group">
+          <label for="select" class="select inline">Select A make</label>
+          <select name="make" id="select" class="inline">
+            <option value="1">Acura</option>
+            <option value="2">Acura</option>
+            <option value="3">Chevrolet</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="msg" class="select">Enter some part numbers</label>
+          <br />
+          <textarea name="" id="msg" cols="70" rows="3"></textarea>
+        </div>
+        <input type="submit" value="Search" />
+      </form>
+    </div>
+    <div class="order">
+      <div class="heading">
+          <h1 onclick="toggleSection('recent_orders');">Recent open orders&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+      </div>
+      <div class="order-table" id="recent_orders">
+        <table width="90%">
+          <tr style="border-top:none;">
+            <th>Date</th>
+            <th>Person</th>
+            <th>Vehical Make</th>
+            <th> </th>
+          </tr>
+          <tr>
+            <td>11-MAY-15</td>
+            <td>Robert cordy</td>
+            <td>2010 Dodge Ram 3500</td>
+            <td><a href="#">update</a></td>
+          </tr>
+          <tr>
+            <td>11-MAY-15</td>
+            <td>John Smith</td>
+            <td>2010 Dodge Ram 3500</td>
+            <td><a href="#">update</a></td>
+          </tr>
+          <tr>
+            <td>11-MAY-15</td>
+            <td>Shane c johnson</td>
+            <td>2010 Dodge Ram 3500</td>
+            <td><a href="#">update</a></td>
+          </tr>
+          <tr>
+            <td>08-MAY-15</td>
+            <td>Craig Krix</td>
+            <td>2010 Dodge Ram 3500</td>
+            <td><a href="#">update</a></td>
+          </tr>
+          <tr>
+            <td>08-MAY-15</td>
+            <td>Kevin Loveland</td>
+            <td>2010 Dodge Ram 3500</td>
+            <td><a href="#">update</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var coveragePlanViewModel = function () {
+            var self = this;
+
+            self.error = ko.observable();
+
+            function ajaxHelper(uri, data) {
+                self.error(''); // Clear error message
+                return $.ajax({
+                    type: "POST",
+                    url: uri,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    data: data,
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    self.error(errorThrown);
+                });
+            }
+
+
+            //// Fetch the initial data.
+
+            //self.getAutomatedNotifcationRequest = function (item) {
+            //    getAutomatedNotificationRequestsByInspector(item.InspectorID);
+            //    //var url = "../RequestWebService.asmx/GetAutomatedNotifcationRequest";
+            //    //var data = { "inspectorID": item.InspectorID };
+            //    //var jsonData = JSON.stringify(data);
+
+            //    //ajaxHelper(url, jsonData).done(function (response) {
+            //    //    self.requests(response.d);
+            //    //    self.currentInspectorID(item.inspectorID);
+            //    //    $(".request_detail").hide();
+            //    //    $("#trRequests_" + item.InspectorID).fadeIn();
+            //    //    //console.log(response.d);
+
+            //    //});
+            //};
+
+        };
+
+        ko.applyBindings(new coveragePlanViewModel());
+
+    });
+</script>

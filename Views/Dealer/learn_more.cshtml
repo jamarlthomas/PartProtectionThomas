@@ -1,0 +1,128 @@
+﻿<header class="header">
+  <div class="container">
+    <div class="nav-bar">
+      <div class="inner-container">
+        <div class="logo-area">
+          <div class="logo inline"> <a href="index"><img src="~/Images/logo.png" alt="PartProtection" /></a> </div>
+          <div class="sponsor inline"> <img src="~/Images/ford.png" alt="Ford" /> </div>
+        </div>
+        <div class="nav-area inline">
+          <div class="admin-bar"> <span>Welcome</span>,&nbsp;<a class="user" href="#">John Williams</a> | <a href="#">Logout</a> </div>
+          <div class="main-nav">
+            <ul>
+              <li class="current"><a href="dashboard">Dashboard</a></li>
+              <li><a href="learn_more">Learn More</a></li>
+              <li><a href="#">Sell A Plan</a></li>
+              <li><a href="order_details">Order Details</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">History</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cover2">
+      <div class="search-area2 inline">
+        <h2>DMS SEARCH</h2>
+        <div class="wrapper2"> <i class="icon2"></i>
+          <input type="search" placeholder="ENTER RO #" />
+        </div>
+      </div>
+      <div class="offers-area2 inline">
+        <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/wheel.png" alt="" /> </a> </div>
+        <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/gear.png" alt="" /> </a> </div>
+        <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/tag.png" alt="" /> </a> </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="middle-area">
+  <div class="container">
+    <div class="details-area">
+      <div class="customer-details">
+        <div class="heading">
+            <h1 onclick="toggleSection('customer_details');">Wholesale Policy&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+        </div>
+          <div id="customer_details">
+              <p>Youtube video goes here!</p>
+          </div>
+      </div>
+      <div class="vehicle-details">
+        <div class="heading">
+            <h1 onclick="toggleSection('vehicle_details');">Parts Policy&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+        </div>
+          <div id="vehicle_details">
+              <div id="VehicleForm" style="display:none;">
+                  <form method="post" novalidate="novalidate" id="customer_details" data-bind="with: user, submit: UpdateUser">
+                      <label class="inline">Name: </label><input class="inline" id="mail" type="email" data-bind="value: first_name"><br />
+                      <label class="inline">Name: </label><input class="inline" id="mail" type="email" data-bind="value: last_name"><br />
+                    @*<label class="inline">Street: </label><input class="inline" id="street" type="email" data-bind="value: address"><br />
+                      <label class="inline" style="width:100px !important;">City, State Zip: </label><input class="inline" id="street" type="email" data-bind="value: stateZip"><br />
+                      <label class="inline">Phone: </label><input class="inline" id="street" type="email" data-bind="value: phoneNumb"><br />*@
+                      <br /><button type="submit" class="btn_update" onclick="switchVehicleDetails();">Update&nbsp;</button>
+                  </form>
+              </div>
+              <div id="VehicleDetails" data-bind="with: user">
+                  <p class="inline" data-bind="text: first_name"></p>
+                  <a href="#" class="inline" onclick="switchVehicleDetails();">edit</a>
+                  <p data-bind="text: last_name"></p>
+                  <p data-bind="text: stateZip"></p>
+                  @*<p></p>
+                    <p data-bind="text: phoneNumb"></p>*@
+              </div>
+          </div>
+      </div>
+      <div class="extended-coverage-cost">
+        <div class="heading">
+            <h1 onclick="toggleSection('coverage_cost');">Service Policy&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+        </div>
+          <div class="coverage-cost" id="coverage_cost">
+              <p class="inline" style="align-content:center !important;">Youtube video goes here</p><br />
+          </div> 
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var pageViewModel = function () {
+            var self = this;
+            self.user = ko.observable();
+            
+            function ajaxHelper(uri, method, data) {
+                return $.ajax({
+                    type: method,
+                    url: uri,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: data ? JSON.stringify(data) : null
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                });
+            }
+
+            this.getUser = function () {
+                var user_id = 1;
+                var url = "../api/user_details/" + parseInt(user_id) ;
+                ajaxHelper(url, 'GET', null).done(function (response) {
+                    self.user(response);
+                });
+            }
+
+
+            this.UpdateUser = function () {
+                var url = "../api/update_user/save";
+                ajaxHelper(url, 'POST', self.user()).done(function (response) {
+                    self.user(response);
+                });
+            }
+
+            this.getUser();
+        }
+
+        ko.applyBindings(new pageViewModel());
+    });
+
+</script>

@@ -1,0 +1,32 @@
+﻿
+<section class="middle-area">
+    <div class="container">
+        TEST TEST 
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var sellerPropertiesViewModel = function () {
+            var self = this;
+
+            function ajaxHelper(uri, method, data) {
+                return $.ajax({
+                    type: method,
+                    url: uri,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: data ? JSON.stringify(data) : null
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                });
+            }
+
+        }
+
+        ko.applyBindings(new pageViewModel());
+    });
+
+</script>
+

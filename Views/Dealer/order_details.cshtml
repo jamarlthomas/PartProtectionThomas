@@ -1,0 +1,276 @@
+﻿<header class="header">
+    <div class="container">
+        <div class="nav-bar">
+            <div class="inner-container">
+                <div class="logo-area">
+                    <div class="logo inline"> <a href="index"><img src="~/Images/logo.png" alt="PartProtection" /></a> </div>
+                    <div class="sponsor inline"> <img src="~/Images/ford.png" alt="Ford" /> </div>
+                </div>
+                <div class="nav-area inline">
+                    <div class="admin-bar"> <span>Welcome</span>,&nbsp;<a class="user" href="#">John Williams</a> | <a href="#">Logout</a> </div>
+                    <div class="main-nav">
+                        <ul>
+                            <li class="current"><a href="dashboard">Dashboard</a></li>
+                            <li><a href="#">Learn More</a></li>
+                            <li><a href="#">Sell A Plan</a></li>
+                            <li><a href="order_details">Order Details</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover2">
+            <div class="search-area2 inline">
+                <h2>DMS SEARCH</h2>
+                <div class="wrapper2">
+                    <i class="icon2"></i>
+                    <input type="search" placeholder="ENTER RO #" />
+                </div>
+            </div>
+            <div class="offers-area2 inline">
+                <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/wheel.png" alt="" /> </a> </div>
+                <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/gear.png" alt="" /> </a> </div>
+                <div class="features2 inline"> <a class="box2" href="#"> <img src="~/Images/tag.png" alt="" /> </a> </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="middle-area">
+    <div class="container">
+        <div class="details-area">
+            <div class="customer-details">
+                <div class="heading">
+                    <h1 onclick="toggleSection('customer_details');">Customer details&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+                </div>
+                <div id="customer_details" data-bind="with: $root.customer">
+                    <div id="CustomerDetails">
+                        <p class="inline" data-bind="text: first_name+' '+last_name">robert cordy</p>
+                        <a href="#" class="inline" onclick="switchCustomerDetails();">edit</a>
+                        <p data-bind="text: address1">3286 thrush creek road</p>
+                        <p data-bind="text: city+','+state+' '+zip">new meadows, id 83654</p>
+                        <p></p>
+                        <p data-bind="text: phone_numb">1.208.634.6691</p>
+                    </div>
+                    <div id="CustomerForm" style="display:none;">
+                        <form method="post" novalidate="novalidate" id="customer_details" data-bind="submit: $root.UpdateCustomer">
+                            <label class="inline" style="width:100px !important;">First Name: </label><input class="inline" id="name" type="email" data-bind="value: first_name"><br />
+                            <label class="inline" style="width:100px !important;">Last Name: </label><input class="inline" id="name" type="email" data-bind="value: last_name"><br />
+                            <label class="inline">Street: </label><input class="inline" id="street" type="email" data-bind="value: address1"><br />
+                            <label class="inline" style="width:100px !important;">City, State Zip: </label><input class="inline" id="city_state_zip" type="email" data-bind="value: city"><br /><input class="inline" id="city_state_zip" type="email" data-bind="value: state"><br /><input class="inline" id="city_state_zip" type="email" data-bind="value: zip">
+                            <label class="inline">Phone: </label><input class="inline" id="phone" type="email" data-bind="value: phone_numb"><br />
+                            <br /><button type="submit" class="btn_update" onclick="switchCustomerDetails();">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="vehicle-details">
+                <div class="heading">
+                    <h1 onclick="toggleSection('vehicle_details');">Vehicle details&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+                </div>
+                <div id="vehicle_details" data-bind="with: $root.warranty_order">
+                    <div id="VehicleDetails">
+                        <p class="inline" data-bind="text: year+' '+vehicle_make+' '+vehicle_model"></p>
+                        <a class="inline" href="#" onclick="switchVehicleDetails();">edit</a>
+                        <p data-bind="text: 'Mileage: '+ mileage"></p>
+                        <p>new meadows, id 83654</p>
+                        <p data-bind="text: 'VIN: '+ vin"></p>
+                    </div>
+                    <div id="VehicleForm" style="display:none;">
+                        <form method="post" novalidate="novalidate" id="customer_details" data-bind="submit: $root.UpdateOrder">
+                            <label class="inline" style="width:110px !important;">Vehicle Details: </label><input class="inline" id="mail" type="email" data-bind="value: year"><input class="inline" id="mail" type="email" data-bind="value: vehicle_make"><input class="inline" id="mail" type="email" data-bind="value: vehicle_model"><br />
+                            <label class="inline">Mileage: </label><input class="inline" id="street" type="email" data-bind="value: mileage"><br />
+                            <label class="inline" style="width:100px !important;">Location: </label><input class="inline" id="street" type="email" placeholder="NEW MEADOWS, ID 83654"><br />
+                            <label class="inline">VIN: </label><input class="inline" id="street" type="email" data-bind="value: vin"><br />
+                            <br /><button type="submit" class="btn_update" onclick="switchVehicleDetails();">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="extended-coverage-cost">
+                <div class="heading">
+                    <h1 onclick="toggleSection('coverage_cost');">Extended coverage cost&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer;" src="../../Images/arrows.png" /></h1>
+                </div>
+                <div class="coverage-cost" id="coverage_cost">
+                    <p class="edit-2 inline">Parts coverage</p>
+                    <p class="inline">$24.16</p>
+                    <p class="edit-2 inline">labor coverage</p>
+                    <p class="inline">$60.96</p>
+                    <p class="edit-2 grand inline">grand total</p>
+                    <p class="grand inline">$85.12</p>
+                    <p class="edit-3 inline">DMS RO NO.</p>
+                    <p class="inline"><input type="text" placeholder="119933" /></p>
+                    <a href="#" class="sell-button" style="float:left !important;">SELL COVERAGE PLAN</a>
+                </div>
+            </div>
+        </div>
+        <div class="part-service-details">
+            <div class="title">
+                <h1 onclick="toggleSection('parts_service');">PARTS AND SERVICE DETAILS&nbsp;&nbsp;&nbsp;<img style="vertical-align:text-top; cursor:pointer; margin-top:10px !important;" src="../../Images/arrows.png" /></h1>
+            </div>
+            <div class="parts" id="parts_service">
+                <h1>PARTS</h1>
+                <div id="parts_and_labor" class="col">
+                    <div id="parts" class="order-table2">
+                        <table id="PartsTable">
+                            <tr class="r-1">
+                                <th width="14%">Parts name</th>
+                                <th width="16%">assosiated labor</th>
+                                <th width="26%" class="qrate">quantity &#64 rate</th>
+                                <th width="10%">Part total</th>
+                                <th width="14%">coverage cost</th>
+                                <th class="span"><span class="add" style="cursor: pointer;" onclick="addRowParts()">+</span><span>Add new</span></th>
+                            </tr>
+                            <tbody data-bind="foreach: $root.warranty_details">
+                                <!--ko if: product_cat_descript=='Parts'-->
+                                <tr class="r-3">
+                                    <td>
+                                        <ul class="prim">
+                                            <li data-bind="text: product_descript_details">JOINT KIT NONE</li>
+                                            <li data-bind="text: product_sku">(60865428AC)</li>
+                                        </ul>
+                                    </td>
+                                    <td>joint kit none</td>
+                                    <td class="qrate">
+                                        <input class="one" type="text" placeholder="1" data-bind="value: product_quantity"/>
+                                        &#64
+                                        <input type="text" placeholder="$119.00" data-bind="value: item_price" />
+                                        <span>EACH</span>
+                                    </td>
+                                    <td>$119.00</td>
+                                    <td>$23.80</td>
+                                    <td><a href="#" class="update" data-bind="click: $root.UpdateDetails">update</a><a href="#" class="delete" data-bind="click: $root.DeleteDetails">delete</a></td>
+                                </tr>
+                                <!--/ko-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <h1>labor</h1>
+                    <div id="labor" class="order-table2">
+                        <table id="LaborTable">
+                            <tr class="r-v1">
+                                <th width="21%">labor performed by</th>
+                                <th width="16%">assosiated parts</th>
+                                <th width="20%" class="qrate">labor hours &#64 rate</th>
+                                <th width="12%">labor total</th>
+                                <th width="14%">coverage cost</th>
+                                <th class="span"><span class="add" style="cursor: pointer;" onclick="addRowLabor()">+</span><span>Add new</span></th>
+                            </tr>
+                            <tbody data-bind="foreach: $root.warranty_details">
+                                <!--ko if: product_cat_descript=='Labor'-->
+                                <tr class="r-v3 r-3">
+                                    <td data-bind="text: mechanic"></td>
+                                    <td>
+                                        <ul class="prim">
+                                            <li data-bind="text: product_descript_details"></li>
+                                            <li data-bind="text: product_sku"></li>
+                                        </ul>
+                                    </td>
+                                    <td class="qrate">
+                                        <input class="one" type="text" placeholder="2.1" data-bind="value: product_quantity" />
+                                        &#64 <span data-bind="text: item_price">$105.00</span>&nbsp;/ hour
+                                    </td>
+                                    <td>$220.50</td>
+                                    <td>$44.14</td>
+                                    <td><a href="#" class="update" data-bind="click: $root.UpdateDetails">update</a><a href="#" class="delete" data-bind="click: $root.DeleteDetails">delete</a></td>
+                                </tr>
+                                <!--/ko-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var WarrantyOrderViewModel = function () {
+            var self = this;
+
+            self.warranty_order = ko.observable();
+            self.customer = ko.observable();
+            self.warranty_details = ko.observableArray();
+
+
+            function ajaxHelper(uri, method, data) {
+                return $.ajax({
+                    type: method,
+                    url: uri,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: data ? JSON.stringify(data) : null
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                });
+            }
+
+            self.getWarrantyOrder = function () {
+                var warranty_order_id = 2;
+                var url = "../api/warranty_order/" + parseInt(warranty_order_id);
+                ajaxHelper(url, 'GET', null).done(function (response) {
+                    self.warranty_order(response);
+                });
+            }
+
+            self.UpdateOrder = function () {
+                var url = "../api/createupdate_order/save";
+                ajaxHelper(url, 'POST', self.warranty_order()).done(function (response) {
+                    self.warranty_order(response);
+                });
+            }
+
+            self.getCustbyOrderID = function () {
+                var warranty_order_id = 2;
+                var url = "../api/customer/GetCustomerbyOrderID/" + parseInt(warranty_order_id);
+                ajaxHelper(url, 'GET', null).done(function (response) {
+                    self.customer(response);
+                });
+            }
+
+            self.UpdateCustomer = function () {
+                var url = "../api/update_customer/save";
+                ajaxHelper(url, 'POST', self.customer()).done(function (response) {
+                    self.customer(response);
+                });
+            }
+
+            self.getDetailsbyOrderID = function () {
+                var warranty_order_id = 2;
+                var url = "../api/warranty_order_details/GetDetailsbyOrderID/" + parseInt(warranty_order_id);
+                ajaxHelper(url, 'GET', null).done(function (response) {
+                    self.warranty_details(response);
+
+                });
+            }
+
+            self.UpdateDetails = function (warranty_details) {
+                var url = "../api/createupdate_details/save";
+                ajaxHelper(url, 'POST', warranty_details).done(function (response) {
+                });
+            }
+
+
+            self.DeleteDetails = function (warranty_details) {
+                var url = "../api/delete_details/" + parseInt(warranty_details.order_detail_id);
+                ajaxHelper(url, 'DELETE', null).done(function (response) {
+                    self.pageload();
+                });
+            }
+            self.pageload = function () {
+                self.getWarrantyOrder();
+                self.getCustbyOrderID();
+                self.getDetailsbyOrderID();
+            }
+
+            self.pageload();
+
+        };
+
+        ko.applyBindings(new WarrantyOrderViewModel());
+
+    });
+
+</script>

@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+    <title>jQuery show</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.js"></script>
+    <script type="text/javascript">
+        function switchVisible() {
+            if (document.getElementById('Div1')) {
+
+                if (document.getElementById('Div1').style.display == 'none') {
+                    document.getElementById('Div1').style.display = 'block';
+                    document.getElementById('Div2').style.display = 'none';
+                }
+                else {
+                    document.getElementById('Div1').style.display = 'none';
+                    document.getElementById('Div2').style.display = 'block';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <br />
+    <div id="Div1" style="display:block;">Div 1</div>
+    <div id="Div2" style="display:none;">Div 2</div>
+    <div id="hide_show"><u style="cursor:pointer;" onclick="switchVisible();">Edit</u></div>
+
+</body>
+</html>
